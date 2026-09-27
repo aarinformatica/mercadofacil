@@ -1,0 +1,1121 @@
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    >
+
+    <title>Mercado Fácil</title>
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         PARTICULAS GLOBAIS
+    ====================================================== -->
+    <div id="particles" class="particles" aria-hidden="true"></div>
+
+
+    <!-- =====================================================
+         TELA INICIAL
+    ====================================================== -->
+    <section id="splashScreen" class="screen splash-screen">
+
+        <div class="splash-glow glow-one"></div>
+        <div class="splash-glow glow-two"></div>
+
+        <!-- Elementos decorativos de supermercado -->
+        <div class="market-shelf shelf-one"></div>
+        <div class="market-shelf shelf-two"></div>
+
+        <div class="market-decor decor-bag">
+            <i class="fa-solid fa-bag-shopping"></i>
+        </div>
+
+        <div class="market-decor decor-basket">
+            <i class="fa-solid fa-basket-shopping"></i>
+        </div>
+
+        <div class="market-decor decor-coins">
+            <i class="fa-solid fa-coins"></i>
+        </div>
+
+        <!-- Frutas e produtos -->
+        <div class="floating-product product-apple">🍎</div>
+        <div class="floating-product product-broccoli">🥦</div>
+        <div class="floating-product product-banana">🍌</div>
+        <div class="floating-product product-carrot">🥕</div>
+        <div class="floating-product product-milk">🥛</div>
+
+        <!-- Etiquetas de preço -->
+        <div class="price-tag price-one">R$ 4,99</div>
+        <div class="price-tag price-two">R$ 9,90</div>
+        <div class="price-tag price-three">OFERTA</div>
+
+        <!-- Conteúdo -->
+        <div class="splash-content">
+
+            <div class="brand-mark">
+                <i class="fa-solid fa-basket-shopping"></i>
+            </div>
+
+            <div class="brand-title">
+                <h1>
+                    Mercado <span>Fácil</span>
+                </h1>
+
+                <p>
+                    Sua lista de compras simples,
+                    rápida e inteligente.
+                </p>
+            </div>
+
+            <div class="store-status">
+                <span class="status-dot"></span>
+                Mercado aberto
+            </div>
+
+            <button
+                id="enterButton"
+                class="enter-button"
+                type="button"
+            >
+                <span>Entrar no Mercado</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+
+        </div>
+
+        <div class="splash-footer">
+            <span>
+                <i class="fa-solid fa-leaf"></i>
+                Compras mais fáceis
+            </span>
+
+            <span>
+                <i class="fa-solid fa-mobile-screen-button"></i>
+                Feito para você
+            </span>
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         LOADING
+    ====================================================== -->
+    <div
+        id="loadingOverlay"
+        class="loading-overlay hidden"
+    >
+
+        <div class="loading-card">
+
+            <div class="loading-icon">
+                <i class="fa-solid fa-basket-shopping"></i>
+            </div>
+
+            <span class="loading-kicker">
+                MERCADO FÁCIL
+            </span>
+
+            <h2 id="loadingText">
+                Preparando o mercado...
+            </h2>
+
+            <div class="loading-progress">
+                <div
+                    id="loadingProgress"
+                    class="loading-progress-bar"
+                ></div>
+            </div>
+
+            <div class="loading-percentage">
+                <span>Carregando</span>
+                <strong id="loadingPercentage">0%</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         MENU PRINCIPAL
+    ====================================================== -->
+    <main
+        id="menuScreen"
+        class="screen menu-screen hidden"
+    >
+
+        <header class="main-header">
+
+            <div class="brand-inline">
+
+                <span class="brand-mini-icon">
+                    <i class="fa-solid fa-basket-shopping"></i>
+                </span>
+
+                <div>
+                    <span class="brand-small">
+                        MERCADO
+                    </span>
+
+                    <strong>
+                        Fácil
+                    </strong>
+                </div>
+
+            </div>
+
+            <div class="header-actions">
+
+                <div class="online-status">
+                    <span></span>
+                    Online
+                </div>
+
+                <button
+                    id="disconnectButton"
+                    class="disconnect-button"
+                    type="button"
+                >
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Desconectar</span>
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <section class="menu-hero">
+
+            <span class="section-kicker">
+                BEM-VINDO
+            </span>
+
+            <h2>
+                O que você deseja fazer?
+            </h2>
+
+            <p>
+                Organize suas compras, confira sua lista
+                e encontre mercados próximos.
+            </p>
+
+        </section>
+
+
+        <section class="menu-cards">
+
+            <!-- Criar lista -->
+            <button
+                class="menu-card menu-card-create"
+                data-action="create"
+                type="button"
+            >
+
+                <div class="menu-card-icon">
+                    <i class="fa-solid fa-list-check"></i>
+                </div>
+
+                <div class="menu-card-content">
+                    <span class="menu-card-kicker">
+                        ORGANIZAR
+                    </span>
+
+                    <h3>
+                        Criar lista de compras
+                    </h3>
+
+                    <p>
+                        Adicione produtos,
+                        categorias e quantidades.
+                    </p>
+                </div>
+
+                <span class="menu-card-arrow">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </span>
+
+            </button>
+
+
+            <!-- Visualizar lista -->
+            <button
+                class="menu-card menu-card-view"
+                data-action="view"
+                type="button"
+            >
+
+                <div class="menu-card-icon">
+                    <i class="fa-solid fa-receipt"></i>
+                </div>
+
+                <div class="menu-card-content">
+                    <span class="menu-card-kicker">
+                        CONFERIR
+                    </span>
+
+                    <h3>
+                        Visualizar lista de compras
+                    </h3>
+
+                    <p>
+                        Veja seus itens e informe
+                        os preços dos produtos.
+                    </p>
+                </div>
+
+                <span class="menu-card-arrow">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </span>
+
+            </button>
+
+
+            <!-- Mercados -->
+            <button
+                class="menu-card menu-card-nearby"
+                data-action="nearby"
+                type="button"
+            >
+
+                <div class="menu-card-icon">
+                    <i class="fa-solid fa-location-dot"></i>
+                </div>
+
+                <div class="menu-card-content">
+                    <span class="menu-card-kicker">
+                        EXPLORAR
+                    </span>
+
+                    <h3>
+                        Mercados próximos
+                    </h3>
+
+                    <p>
+                        Encontre mercados usando
+                        seu CEP.
+                    </p>
+                </div>
+
+                <span class="menu-card-arrow">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </span>
+
+            </button>
+
+        </section>
+
+
+        <div class="menu-decoration">
+            <span>🍎</span>
+            <span>🥦</span>
+            <span>🥕</span>
+            <span>🥛</span>
+        </div>
+
+    </main>
+
+
+    <!-- =====================================================
+         CRIAR LISTA
+    ====================================================== -->
+    <main
+        id="createListScreen"
+        class="screen inner-screen create-screen hidden"
+    >
+
+        <div class="inner-header">
+
+            <button
+                id="backFromCreate"
+                class="back-button"
+                type="button"
+                aria-label="Voltar"
+            >
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+
+            <div>
+                <span class="section-kicker">
+                    ORGANIZAR
+                </span>
+
+                <h2>
+                    Criar lista de compras
+                </h2>
+            </div>
+
+        </div>
+
+
+        <section class="list-form-card">
+
+            <div class="form-card-heading">
+
+                <div class="form-heading-icon">
+                    <i class="fa-solid fa-cart-plus"></i>
+                </div>
+
+                <div>
+                    <h3>
+                        Adicionar produto
+                    </h3>
+
+                    <p>
+                        Informe o produto e a quantidade.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="field-group">
+
+                <label for="productInput">
+                    Produto
+                </label>
+
+                <div class="input-wrapper">
+
+                    <i class="fa-solid fa-basket-shopping"></i>
+
+                    <input
+                        id="productInput"
+                        type="text"
+                        maxlength="80"
+                        placeholder="Ex.: Arroz"
+                        autocomplete="off"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="form-grid">
+
+                <!-- Categoria -->
+                <div class="field-group">
+
+                    <label for="categoryListboxButton">
+                        Categoria
+                    </label>
+
+                    <div
+                        id="categorySelect"
+                        class="category-select"
+                    >
+
+                        <button
+                            id="categoryListboxButton"
+                            class="category-select-button"
+                            type="button"
+                            aria-haspopup="listbox"
+                            aria-expanded="false"
+                        >
+
+                            <span class="category-selected-icon">
+                                <i class="fa-solid fa-box-open"></i>
+                            </span>
+
+                            <span id="categorySelectedLabel">
+                                Mercearia
+                            </span>
+
+                            <i class="fa-solid fa-chevron-down category-chevron"></i>
+
+                        </button>
+
+
+                        <div
+                            id="categoryOptions"
+                            class="category-options"
+                            role="listbox"
+                            aria-label="Categorias"
+                        >
+
+                            <button
+                                type="button"
+                                class="category-option"
+                                role="option"
+                                data-value="Hortifruti"
+                                data-icon="fa-apple-whole"
+                            >
+                                <i class="fa-solid fa-apple-whole"></i>
+                                <span>Hortifruti</span>
+                            </button>
+
+                            <button
+                                type="button"
+                                class="category-option"
+                                role="option"
+                                data-value="Carnes"
+                                data-icon="fa-drumstick-bite"
+                            >
+                                <i class="fa-solid fa-drumstick-bite"></i>
+                                <span>Carnes</span>
+                            </button>
+
+                            <button
+                                type="button"
+                                class="category-option"
+                                role="option"
+                                data-value="Laticínios"
+                                data-icon="fa-cheese"
+                            >
+                                <i class="fa-solid fa-cheese"></i>
+                                <span>Laticínios</span>
+                            </button>
+
+                            <button
+                                type="button"
+                                class="category-option"
+                                role="option"
+                                data-value="Bebidas"
+                                data-icon="fa-bottle-water"
+                            >
+                                <i class="fa-solid fa-bottle-water"></i>
+                                <span>Bebidas</span>
+                            </button>
+
+                            <button
+                                type="button"
+                                class="category-option"
+                                role="option"
+                                data-value="Padaria"
+                                data-icon="fa-bread-slice"
+                            >
+                                <i class="fa-solid fa-bread-slice"></i>
+                                <span>Padaria</span>
+                            </button>
+
+                            <button
+                                type="button"
+                                class="category-option selected"
+                                role="option"
+                                data-value="Mercearia"
+                                data-icon="fa-box-open"
+                            >
+                                <i class="fa-solid fa-box-open"></i>
+                                <span>Mercearia</span>
+                            </button>
+
+                            <button
+                                type="button"
+                                class="category-option"
+                                role="option"
+                                data-value="Limpeza"
+                                data-icon="fa-spray-can-sparkles"
+                            >
+                                <i class="fa-solid fa-spray-can-sparkles"></i>
+                                <span>Limpeza</span>
+                            </button>
+
+                            <button
+                                type="button"
+                                class="category-option"
+                                role="option"
+                                data-value="Higiene"
+                                data-icon="fa-pump-soap"
+                            >
+                                <i class="fa-solid fa-pump-soap"></i>
+                                <span>Higiene</span>
+                            </button>
+
+                            <button
+                                type="button"
+                                class="category-option"
+                                role="option"
+                                data-value="Congelados"
+                                data-icon="fa-snowflake"
+                            >
+                                <i class="fa-solid fa-snowflake"></i>
+                                <span>Congelados</span>
+                            </button>
+
+                            <button
+                                type="button"
+                                class="category-option"
+                                role="option"
+                                data-value="Outros"
+                                data-icon="fa-basket-shopping"
+                            >
+                                <i class="fa-solid fa-basket-shopping"></i>
+                                <span>Outros</span>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Quantidade -->
+                <div class="field-group">
+
+                    <label for="quantityInput">
+                        Quantidade
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-solid fa-hashtag"></i>
+
+                        <input
+                            id="quantityInput"
+                            type="number"
+                            min="1"
+                            max="9999"
+                            step="1"
+                            value="1"
+                            inputmode="numeric"
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <p
+                id="createListMessage"
+                class="field-message"
+            ></p>
+
+
+            <button
+                id="addItemButton"
+                class="primary-button full-button"
+                type="button"
+            >
+                <i class="fa-solid fa-plus"></i>
+                Adicionar à lista
+            </button>
+
+        </section>
+
+
+        <section class="created-list-section">
+
+            <div class="results-heading">
+
+                <div>
+                    <span class="section-kicker">
+                        SUA LISTA
+                    </span>
+
+                    <h3>
+                        Itens adicionados
+                    </h3>
+                </div>
+
+                <span
+                    id="createListCount"
+                    class="count-badge"
+                >
+                    0
+                </span>
+
+            </div>
+
+
+            <div
+                id="createdItemsList"
+                class="created-items-list"
+            ></div>
+
+
+            <div
+                id="createdListEmpty"
+                class="empty-card"
+            >
+
+                <div class="empty-icon">
+                    <i class="fa-solid fa-basket-shopping"></i>
+                </div>
+
+                <h3>
+                    Sua lista está vazia
+                </h3>
+
+                <p>
+                    Adicione seu primeiro produto acima.
+                </p>
+
+            </div>
+
+
+            <button
+                id="clearListButton"
+                class="danger-outline-button hidden"
+                type="button"
+            >
+                <i class="fa-solid fa-trash-can"></i>
+                Excluir lista
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         VISUALIZAR LISTA
+    ====================================================== -->
+    <main
+        id="viewListScreen"
+        class="screen inner-screen view-screen hidden"
+    >
+
+        <div class="inner-header">
+
+            <button
+                id="backFromView"
+                class="back-button"
+                type="button"
+                aria-label="Voltar"
+            >
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+
+            <div>
+                <span class="section-kicker">
+                    CONFERIR
+                </span>
+
+                <h2>
+                    Visualizar lista
+                </h2>
+            </div>
+
+        </div>
+
+
+        <section class="total-card">
+
+            <div class="total-card-icon">
+                <i class="fa-solid fa-calculator"></i>
+            </div>
+
+            <div>
+                <span>
+                    TOTAL DA COMPRA
+                </span>
+
+                <strong id="grandTotal">
+                    R$ 0,00
+                </strong>
+            </div>
+
+        </section>
+
+
+        <section class="price-list-section">
+
+            <div class="results-heading">
+
+                <div>
+                    <span class="section-kicker">
+                        PREÇOS
+                    </span>
+
+                    <h3>
+                        Produtos da lista
+                    </h3>
+                </div>
+
+                <span
+                    id="viewListCount"
+                    class="count-badge"
+                >
+                    0
+                </span>
+
+            </div>
+
+
+            <div
+                id="priceItemsList"
+                class="price-items-list"
+            ></div>
+
+
+            <div
+                id="priceListEmpty"
+                class="empty-card"
+            >
+
+                <div class="empty-icon">
+                    <i class="fa-solid fa-receipt"></i>
+                </div>
+
+                <h3>
+                    Nenhum produto cadastrado
+                </h3>
+
+                <p>
+                    Crie uma lista de compras primeiro.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         MERCADOS PRÓXIMOS
+    ====================================================== -->
+    <main
+        id="nearbyMarketsScreen"
+        class="screen inner-screen nearby-screen hidden"
+    >
+
+        <div class="inner-header">
+
+            <button
+                id="backFromNearby"
+                class="back-button"
+                type="button"
+                aria-label="Voltar"
+            >
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+
+            <div>
+                <span class="section-kicker">
+                    EXPLORAR
+                </span>
+
+                <h2>
+                    Mercados próximos
+                </h2>
+            </div>
+
+        </div>
+
+
+        <section class="cep-search-card">
+
+            <div class="cep-search-icon">
+                <i class="fa-solid fa-location-dot"></i>
+            </div>
+
+            <div class="cep-search-content">
+
+                <h3>
+                    Encontre mercados perto de você
+                </h3>
+
+                <p>
+                    Digite seu CEP para localizar
+                    estabelecimentos próximos.
+                </p>
+
+
+                <div class="cep-input-row">
+
+                    <div class="cep-input-wrapper">
+
+                        <i class="fa-solid fa-map-pin"></i>
+
+                        <input
+                            id="cepInput"
+                            type="text"
+                            inputmode="numeric"
+                            maxlength="9"
+                            placeholder="00000-000"
+                            autocomplete="postal-code"
+                        >
+
+                    </div>
+
+                    <button
+                        id="searchMarketsButton"
+                        class="primary-button"
+                        type="button"
+                    >
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        Buscar
+                    </button>
+
+                </div>
+
+
+                <p
+                    id="cepMessage"
+                    class="field-message"
+                ></p>
+
+            </div>
+
+        </section>
+
+
+        <section
+            id="locatedAddressCard"
+            class="located-address-card hidden"
+        >
+
+            <div class="located-icon">
+                <i class="fa-solid fa-location-crosshairs"></i>
+            </div>
+
+            <div>
+                <span>
+                    Localização encontrada
+                </span>
+
+                <strong id="locatedAddress"></strong>
+            </div>
+
+            <button
+                id="changeCepButton"
+                class="icon-button"
+                type="button"
+                aria-label="Alterar CEP"
+            >
+                <i class="fa-solid fa-pen"></i>
+            </button>
+
+        </section>
+
+
+        <section
+            id="marketsLoading"
+            class="markets-loading hidden"
+        >
+
+            <div class="loading-spinner"></div>
+
+            <div>
+                <strong>
+                    Procurando mercados...
+                </strong>
+
+                <span>
+                    Consultando dados públicos do mapa.
+                </span>
+            </div>
+
+        </section>
+
+
+        <section
+            id="marketsResults"
+            class="markets-results hidden"
+        >
+
+            <div class="results-heading">
+
+                <div>
+                    <span class="section-kicker">
+                        RESULTADOS
+                    </span>
+
+                    <h3>
+                        Mercados encontrados
+                    </h3>
+                </div>
+
+                <span
+                    id="marketsCount"
+                    class="count-badge"
+                >
+                    0
+                </span>
+
+            </div>
+
+
+            <div
+                id="marketsList"
+                class="markets-list"
+            ></div>
+
+        </section>
+
+
+        <section
+            id="marketsEmpty"
+            class="markets-empty hidden"
+        >
+
+            <div class="empty-icon">
+                <i class="fa-solid fa-store-slash"></i>
+            </div>
+
+            <h3>
+                Nenhum mercado encontrado
+            </h3>
+
+            <p>
+                Não encontramos estabelecimentos
+                próximos desse CEP.
+            </p>
+
+        </section>
+
+
+        <section
+            id="marketsError"
+            class="markets-error hidden"
+        >
+
+            <div class="empty-icon">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+
+            <h3>
+                Não foi possível realizar a busca
+            </h3>
+
+            <p id="marketsErrorText">
+                Verifique seu CEP e tente novamente.
+            </p>
+
+            <button
+                id="retryMarketsButton"
+                class="secondary-button"
+                type="button"
+            >
+                <i class="fa-solid fa-rotate-right"></i>
+                Tentar novamente
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         MODAL DE CONFIRMAÇÃO
+    ====================================================== -->
+    <div
+        id="confirmModal"
+        class="modal-backdrop hidden"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="confirmModalTitle"
+        aria-describedby="confirmModalMessage"
+    >
+
+        <div class="confirm-modal">
+
+            <button
+                id="confirmModalClose"
+                class="modal-close"
+                type="button"
+                aria-label="Fechar"
+            >
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+
+            <div
+                id="confirmModalIconWrapper"
+                class="confirm-modal-icon"
+            >
+                <i
+                    id="confirmModalIcon"
+                    class="fa-solid fa-circle-question"
+                ></i>
+            </div>
+
+
+            <span
+                id="confirmModalKicker"
+                class="modal-kicker"
+            >
+                CONFIRMAÇÃO
+            </span>
+
+
+            <h3 id="confirmModalTitle">
+                Tem certeza?
+            </h3>
+
+
+            <p id="confirmModalMessage">
+                Deseja continuar?
+            </p>
+
+
+            <div class="confirm-modal-actions">
+
+                <button
+                    id="confirmModalCancel"
+                    class="secondary-button"
+                    type="button"
+                >
+                    Cancelar
+                </button>
+
+                <button
+                    id="confirmModalConfirm"
+                    class="danger-button"
+                    type="button"
+                >
+                    Confirmar
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         TOAST
+    ====================================================== -->
+    <div
+        id="toast"
+        class="toast hidden"
+        role="status"
+        aria-live="polite"
+    >
+        <i
+            id="toastIcon"
+            class="fa-solid fa-circle-check"
+        ></i>
+
+        <span id="toastMessage"></span>
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
